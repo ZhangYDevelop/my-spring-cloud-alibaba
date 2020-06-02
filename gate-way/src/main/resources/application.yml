@@ -1,0 +1,42 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: dubbo-gate-way
+  cloud:
+    nacos:
+      discovery:
+        server-addr: www.mynacos.com:8848
+        ip: www.mylocalhost.com
+#    gateway:
+#          discovery:
+#            locator:
+#              enabled: true
+#          routes: #默认会根据服务名称进行路由
+#            - id: id-user-service-provider    #随意，方便记忆并且在所有路由定义中唯一即可
+#              uri: lb://user-service-provider   # lb://为固定写法，表示开启负载均衡
+#              predicates:
+#                - Path=/user-service-provider/**
+#            - id: id-user-service-consumer
+#              uri: lb://user-service-consumer
+#              predicates:
+#                - Path=/user-service-consumer/**
+#              filters:
+#                - StripPrefix=1
+#dubbo:
+##  cloud:
+#    #订阅的服务 默认订阅所有服务
+#    #subscribed-services: user-service-provider,user-service-consumer
+#  protocol:
+#    port: 20884
+#    name: dubbo
+#    id: test
+#  registry:
+#      #将dubbo服务挂在到Springcloud，本案例中就是读取nacos中的服务
+#      address: spring-cloud://localhost
+##      group: gate-way
+##  application:
+##    qos-enable: false
+#  consumer:
+#    #订阅的客户端不检查，dubbo在服务启动后，回去检查调用的Reference接口，检查失败，会导致启动不成功
+#    check: false
