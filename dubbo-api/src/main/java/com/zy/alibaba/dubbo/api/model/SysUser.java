@@ -53,4 +53,15 @@ public class SysUser implements Serializable {
     public void setEnable(boolean enable) {
         this.enable = enable;
     }
+
+    @Override
+    public String toString() {
+        return "SysUser{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", roles='" + roles + '\'' +
+                ", enable=" + enable +
+                '}';
+    }
 }

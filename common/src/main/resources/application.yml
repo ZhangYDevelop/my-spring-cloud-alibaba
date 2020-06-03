@@ -13,6 +13,9 @@ spring:
       discovery:
         server-addr: www.mynacos.com:8848
         ip: www.mylocalhost.com
+  redis:
+    host: www.myredis.com
+    port: 6379
 dubbo:
   protocol:
     name: dubbo
@@ -32,6 +35,5 @@ dubbo:
 security:
   oauth2:
     resource:
-      id: service
       user-info-uri: http://localhost:8004/api/user/userInfo # 使用auth-server进行认证授权，
       prefer-token-info: false
