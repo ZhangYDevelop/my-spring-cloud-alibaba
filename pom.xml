@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>spring-cloud-alibaba</artifactId>
+    <artifactId>my-spring-cloud-alibaba</artifactId>
     <groupId>com.zy.cloud.alibaba</groupId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -18,25 +18,43 @@
 
     <modules>
         <module>gate-way</module>
+        <module>author</module>
+        <module>common</module>
+        <module>dubbo-api</module>
+        <module>utils</module>
+        <module>consummer</module>
     </modules>
 
     <properties>
         <spring-boot-starter-actuator.version>2.1.3.RELEASE</spring-boot-starter-actuator.version>
-        <spring-cloud-starter-alibaba-nacos.version>2.1.2.RELEASE</spring-cloud-starter-alibaba-nacos.version>
-        <spring-cloud-gateway-webflux.version>2.1.2.RELEASE</spring-cloud-gateway-webflux.version>
-        <spring-cloud-starter-dubbo.version>2.1.2.RELEASE</spring-cloud-starter-dubbo.version>
+        <spring-cloud-starter-dubbo.version>2.1.0.RELEASE</spring-cloud-starter-dubbo.version>
         <spring-cloud-starter.version>2.1.2.RELEASE</spring-cloud-starter.version>
+        <mybatis-spring-boot-starter.version>1.3.2</mybatis-spring-boot-starter.version>
+        <mysql-connector-java.version>5.1.45</mysql-connector-java.version>
+        <jedis.version>2.9.1</jedis.version>
+        <dubbo-api.version>1.0-SNAPSHOT</dubbo-api.version>
+        <utils.version>1.0-SNAPSHOT</utils.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
 
+            <dependency>
+                <groupId>com.zy.cloud.alibaba</groupId>
+                <artifactId>dubbo-api</artifactId>
+                <version>${dubbo-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zy.cloud.alibaba</groupId>
+                <artifactId>utils</artifactId>
+                <version>${utils.version}</version>
+            </dependency>
 
             <!--spring cloud version start-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-gateway-webflux</artifactId>
-                <version>${spring-cloud-gateway-webflux.version}</version>
+                <version>${spring-cloud-starter.version}</version>
             </dependency>
 
             <dependency>
@@ -54,17 +72,48 @@
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-                <version>${spring-cloud-starter-alibaba-nacos.version}</version>
+                <version>${spring-cloud-starter.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-                <version>${spring-cloud-starter-alibaba-nacos.version}</version>
+                <version>${spring-cloud-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-security</artifactId>
+                <version>${spring-cloud-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-oauth2</artifactId>
+                <version>${spring-cloud-starter.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.security</groupId>
+                        <artifactId>spring-security-core</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <!--spring cloud version end-->
 
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+            <!-- MySQL驱动 -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql-connector-java.version}</version>
+            </dependency>
 
-
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
