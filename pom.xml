@@ -34,6 +34,7 @@
         <jedis.version>2.9.1</jedis.version>
         <dubbo-api.version>1.0-SNAPSHOT</dubbo-api.version>
         <utils.version>1.0-SNAPSHOT</utils.version>
+        <fastjson.version>1.2.9</fastjson.version>
     </properties>
 
     <dependencyManagement>
@@ -115,6 +116,11 @@
                 <version>${jedis.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>
