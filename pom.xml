@@ -35,6 +35,7 @@
         <dubbo-api.version>1.0-SNAPSHOT</dubbo-api.version>
         <utils.version>1.0-SNAPSHOT</utils.version>
         <fastjson.version>1.2.9</fastjson.version>
+        <swagger2-spring-boot-starter.version>1.1.0</swagger2-spring-boot-starter.version>
     </properties>
 
     <dependencyManagement>
@@ -120,6 +121,12 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.github.wilson-he</groupId>
+                <artifactId>swagger2-spring-boot-starter</artifactId>
+                <version>${swagger2-spring-boot-starter.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
