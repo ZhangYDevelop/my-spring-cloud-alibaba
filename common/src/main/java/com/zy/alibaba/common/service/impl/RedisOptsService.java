@@ -2,7 +2,6 @@ package com.zy.alibaba.common.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.google.gson.JsonObject;
 import com.zy.alibaba.dubbo.api.model.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -14,20 +13,10 @@ import java.util.List;
 import java.util.Set;
 
 @Service
+@SuppressWarnings("all")
 public class RedisOptsService {
 
-    /**
-     * redisTemplate.opsForValue();//操作字符串
-     *
-     * redisTemplate.opsForHash();//操作hash
-     *
-     * redisTemplate.opsForList();//操作list
-     *
-     * redisTemplate.opsForSet();//操作set
-     *
-     * redisTemplate.opsForZSet();//操作有序set
-     */
-    @Autowired
+      @Autowired
     private RedisTemplate<String, String > redisTemplate;
 
     public void optsForSetString() {
@@ -68,9 +57,7 @@ public class RedisOptsService {
     }
 
     public String optsForGetList() {
-        String value = redisTemplate.opsForList().index("list-user-key2", 0) + " list 长度：" +
-                redisTemplate.opsForList()
-                .size("list-user-key2");
+        String value = redisTemplate.opsForList().index("list-user-key2", 0);
         return value;
     }
 
@@ -99,15 +86,15 @@ public class RedisOptsService {
     }
 
     public List<SysUser> optsForZSet() {
-        for (int i = 0; i < 8; i++) {
-            SysUser user = new SysUser();
-            user.setId(Long.valueOf(1));
-            user.setEnable(true);
-            user.setPassword("passwd" + i+1);
-            user.setRoles("role-admin");
-            user.setUsername("user" + i);
-            redisTemplate.opsForZSet().add("zset-key-2", JSONObject.toJSONString(user), i);
-        }
+//        for (int i = 0; i < 8; i++) {
+//            SysUser user = new SysUser();
+//            user.setId(Long.valueOf(1));
+//            user.setEnable(true);
+//            user.setPassword("passwd" + i+1);
+//            user.setRoles("role-admin");
+//            user.setUsername("user" + i);
+//            redisTemplate.opsForZSet().add("zset-key-2", JSONObject.toJSONString(user), i);
+//        }
 
         Set<String> setTmp = redisTemplate.opsForZSet().reverseRange("zset-key-2", 0, 9);
         List<SysUser> retList = new ArrayList<>();
