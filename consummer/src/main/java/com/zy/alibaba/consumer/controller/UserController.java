@@ -19,4 +19,5 @@ public class UserController {
     public ResponseBody<SysUser> getSysUserByUserName(@RequestParam("username") String username) {
        return  userService.getSysUserByUserName(username);
     }
+
 }

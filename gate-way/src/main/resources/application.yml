@@ -8,6 +8,9 @@ spring:
       discovery:
         server-addr: www.mynacos.com:8848
         ip: www.mylocalhost.com
+      config:
+        #取消配置中心
+        enabled: false
     gateway:
       discovery:
         locator:

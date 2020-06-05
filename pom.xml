@@ -128,6 +128,12 @@
                 <artifactId>swagger2-spring-boot-starter</artifactId>
                 <version>${swagger2-spring-boot-starter.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+                <version>${spring-cloud-starter.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

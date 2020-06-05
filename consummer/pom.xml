@@ -67,5 +67,10 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.zy.cloud.alibaba</groupId>
+            <artifactId>utils</artifactId>
+        </dependency>
+
     </dependencies>
 </project>

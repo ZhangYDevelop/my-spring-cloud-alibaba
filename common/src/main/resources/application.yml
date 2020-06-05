@@ -36,7 +36,6 @@ dubbo:
     check: false
   application:
     name: common-service
-
 security:
   oauth2:
     resource:

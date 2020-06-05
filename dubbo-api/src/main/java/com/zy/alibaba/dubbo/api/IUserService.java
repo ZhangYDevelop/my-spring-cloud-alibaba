@@ -2,17 +2,19 @@ package com.zy.alibaba.dubbo.api;
 
 
 import com.zy.alibaba.dubbo.api.model.SysUser;
+import com.zy.alibaba.utils.ResponseBody;
 
+@SuppressWarnings("all")
 public interface IUserService {
 
-    SysUser getSysUserById(Long id);
+    ResponseBody getSysUserById(Long id);
 
-    SysUser getSysUserByUserName(String username);
+    ResponseBody getSysUserByUserName(String username);
 
-    Integer deleteSysUserById(Long id);
+    ResponseBody deleteSysUserById(Long id);
 
-    Integer modifySysUser(SysUser sysUser);
+    ResponseBody modifySysUser(SysUser sysUser);
 
-    Integer addSysUser(SysUser sysUser);
+    ResponseBody addSysUser(SysUser sysUser);
 
 }

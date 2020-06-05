@@ -20,6 +20,7 @@ dubbo:
   protocol:
     name: dubbo
     port: 20884
+#    host: 192.168.106.77 ip配置
   registry:
     #将dubbo服务挂在到Springcloud，本案例中就是读取nacos中的服务
     address: spring-cloud://localhost
@@ -31,6 +32,10 @@ dubbo:
     check: false
   application:
     name: consumer-service
+  provider:
+    #配置服务端超时时间
+    timeout: 2000
+
 
 security:
   oauth2:

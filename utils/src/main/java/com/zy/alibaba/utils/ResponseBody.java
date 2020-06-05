@@ -1,10 +1,12 @@
 package com.zy.alibaba.utils;
 
+import java.io.Serializable;
+
 /**
  * 响应
  * @param <T>
  */
-public class  ResponseBody<T> {
+public class  ResponseBody<T>  implements Serializable {
 
     private String msg = "数据处理成功";
 
@@ -37,5 +39,13 @@ public class  ResponseBody<T> {
     public ResponseBody setSuccess(boolean success) {
         this.success = success;
         return this;
+    }
+
+    public static ResponseBody ok(Object data) {
+        ResponseBody responseBody = new ResponseBody();
+        responseBody.setData(data);
+        responseBody.msg = "数据处理成功";
+        responseBody.setSuccess(true);
+        return  responseBody;
     }
 }
