@@ -16,6 +16,8 @@ spring:
       discovery:
         server-addr: www.mynacos.com:8848
         ip: www.mylocalhost.com
+      config:
+        enabled: false
 
 dubbo:
   protocol:

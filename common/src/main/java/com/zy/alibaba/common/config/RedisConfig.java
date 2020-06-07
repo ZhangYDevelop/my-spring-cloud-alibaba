@@ -1,4 +1,4 @@
-package com.zy.alibaba.common.config.redis;
+package com.zy.alibaba.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
