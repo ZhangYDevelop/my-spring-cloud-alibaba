@@ -1,0 +1,11 @@
+###通过后续了解，SpringCloudConfig和 NacosConfig这种统一配置服务在springboot项目中初始化时，
+#都是加载bootstrap.properties配置文件去初始化上下文。
+#  #这是由spring boot的加载属性文件的优先级决定的，想要在加载属性之前去config server上取配置文件，
+#  那NacosConfig或SpringCloudConfig相关配置就是需要最先加载的，而bootstrap.properties的加载是先于
+#application.properties的，所以config client要配置config的相关配置就只能写到bootstrap.properties里了
+#  ###
+spring:
+  cloud:
+    nacos:
+      config:
+        server-addr: www.mynacos.com:8848
