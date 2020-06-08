@@ -36,6 +36,7 @@
         <utils.version>1.0-SNAPSHOT</utils.version>
         <fastjson.version>1.2.9</fastjson.version>
         <swagger2-spring-boot-starter.version>1.1.0</swagger2-spring-boot-starter.version>
+        <spring-cloud-stream-binder-rocketmq.version>2.1.0.RELEASE</spring-cloud-stream-binder-rocketmq.version>
     </properties>
 
     <dependencyManagement>
@@ -133,6 +134,12 @@
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
                 <version>${spring-cloud-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-stream-binder-rocketmq</artifactId>
+                <version>${spring-cloud-stream-binder-rocketmq.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
