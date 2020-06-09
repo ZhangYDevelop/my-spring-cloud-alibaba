@@ -1,4 +1,4 @@
-package com.zy.alibaba.common.Controller;
+package com.zy.alibaba.common.controller;
 
 import com.zy.alibaba.common.service.impl.RedisOptsService;
 import com.zy.alibaba.dubbo.api.model.SysUser;

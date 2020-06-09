@@ -32,7 +32,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 .useDefaultResponseMessages(false)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.zy.alibaba.common.Controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.zy.alibaba.common.controller"))
                 .paths(PathSelectors.any())
 
                 .build();
