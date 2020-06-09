@@ -19,10 +19,13 @@ spring:
           rocketmq:
             binder:
               # RocketMQ 服务器地址
-              name-server: 192.168.106.92:9876
+              name-server: wwww.myrocketmq.com:9876
           bindings:
             # 这里是个 Map 类型参数，{} 为 YAML 中 Map 的行内写法
             output: {destination: test-topic, content-type: application/json}
+            input: {destination: test-topic, content-type: application/json, group: consumer-group}
+            output1: {destination: test-topic-1, content-type: application/json}
+            input1: {destination: test-topic-1, content-type: application/json, group: consumer-group-1}
   redis:
     host: www.myredis.com
     port: 6379

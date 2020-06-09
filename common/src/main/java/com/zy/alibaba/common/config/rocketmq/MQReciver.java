@@ -6,8 +6,7 @@ import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.stereotype.Component;
 
-//@Component
-//@EnableBinding(StreamClient.class)
+@Component
 public class MQReciver {
 
     private Logger logger = LoggerFactory.getLogger(MQReciver.class);
