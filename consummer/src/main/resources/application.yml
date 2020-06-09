@@ -13,6 +13,8 @@ spring:
       discovery:
         server-addr: www.mynacos.com:8848
         ip: www.mylocalhost.com
+      config:
+        enabled: false
   redis:
     host: www.myredis.com
     port: 6379

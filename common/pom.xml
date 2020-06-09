@@ -90,6 +90,11 @@
             <groupId>com.zy.cloud.alibaba</groupId>
             <artifactId>utils</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-stream-binder-rocketmq</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
