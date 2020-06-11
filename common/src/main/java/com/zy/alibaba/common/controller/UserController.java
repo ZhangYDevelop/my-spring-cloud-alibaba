@@ -1,5 +1,7 @@
 package com.zy.alibaba.common.controller;
 
+import com.zy.alibaba.common.service.dubboservice.UserService;
+import com.zy.alibaba.common.service.impl.RedisCaheUserService;
 import com.zy.alibaba.common.service.impl.RedisOptsService;
 import com.zy.alibaba.dubbo.api.model.SysUser;
 import com.zy.alibaba.utils.ResponseBody;
@@ -17,6 +19,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api")
+@SuppressWarnings("all")
 public class UserController {
 
     @Autowired
@@ -24,6 +27,12 @@ public class UserController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private RedisCaheUserService redisCaheUserService;
 
     @GetMapping("/redis/opts")
     public ResponseBody testRedisOpts() {
@@ -36,8 +45,9 @@ public class UserController {
 //        redisOptsService.optsForSet();
 //
 //        List<SysUser> list = redisOptsService.optsForGetSet();
-        List<SysUser> list = redisOptsService.optsForZSet();
-        return new ResponseBody().setSuccess(true).setData(list);
+//        List<SysUser> list = redisOptsService.optsForZSet();
+        ResponseBody responseBody = redisCaheUserService.getSysUserByUserName("admin");
+        return new ResponseBody().setSuccess(true).setData(responseBody);
     }
 
     @PostMapping("/login")

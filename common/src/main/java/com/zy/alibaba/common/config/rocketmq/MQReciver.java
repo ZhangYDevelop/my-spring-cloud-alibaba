@@ -11,7 +11,7 @@ public class MQReciver {
 
     private Logger logger = LoggerFactory.getLogger(MQReciver.class);
 
-    @StreamListener("input1")
+    @StreamListener(StreamClient.smsConsumer)
     public void test(String message){
         logger.info("从Binding-{}收到信息-{}", "input1", message);
     }

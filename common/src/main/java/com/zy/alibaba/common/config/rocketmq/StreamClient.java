@@ -7,9 +7,12 @@ import org.springframework.messaging.SubscribableChannel;
 
 public interface StreamClient {
 
-    @Input("input1")
-    SubscribableChannel input1();
+    String smsProvider = "smsProvider";
+    String smsConsumer = "smsConsumer";
 
-    @Output("output1")
-    MessageChannel output1();
+    @Input(smsConsumer)
+    SubscribableChannel smsConsumer();
+
+    @Output(smsProvider)
+    MessageChannel smsProvider();
 }

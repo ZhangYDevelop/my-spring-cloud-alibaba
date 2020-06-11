@@ -1,8 +1,8 @@
 package com.zy.alibaba.common.controller;
 
 import com.zy.alibaba.common.config.rocketmq.StreamClient;
-import org.apache.rocketmq.common.message.MessageConst;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.stream.binder.BinderHeaders;
 import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+
 
 /**
  * @AUTHOR zhangy
@@ -20,16 +20,14 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api/rocketmq")
+@SuppressWarnings("all")
 public class RocketMessageController {
-
 
     @Autowired
     private Source source;
 
     @Autowired
     private StreamClient client;
-
-
 
     @RequestMapping("/send1")
     public String sendOutput(@RequestParam("msg") String msg)  {
@@ -39,7 +37,13 @@ public class RocketMessageController {
 
     @RequestMapping("/send2")
     public String sendOutput2() {
-         client.output1().send(MessageBuilder.withPayload("Hello RocketMQ Consumer input2").build());
-        return "status ";
+        List<String> list = Arrays.asList("创建订单", "支付", "退款");
+        for (String s : list) {
+            MessageBuilder builder = MessageBuilder.withPayload(s).setHeader(BinderHeaders.PARTITION_HEADER, 0);
+            Message message = builder.build();
+            client.smsProvider().send(message);
+        }
+//         client.smsProvider().send(MessageBuilder.withPayload("Hello RocketMQ Consumer input2").build());
+        return "status " + System.currentTimeMillis();
     }
 }

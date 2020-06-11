@@ -6,6 +6,7 @@ import com.zy.alibaba.dubbo.api.model.SysUser;
 import com.zy.alibaba.utils.ResponseBody;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 
 @Service
 public class UserService implements IUserService {

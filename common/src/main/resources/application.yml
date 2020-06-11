@@ -24,8 +24,8 @@ spring:
         # 这里是个 Map 类型参数，{} 为 YAML 中 Map 的行内写法
         output: {destination: test-topic, content-type: application/json}
         input: {destination: test-topic, content-type: application/json, group: consumer-group}
-        output1: {destination: test-topic-1, content-type: application/json}
-        input1: {destination: test-topic-1, content-type: application/json, group: consumer-group-1}
+        smsProvider: {destination: sms-topic, content-type: application/json, producer: {sync: true}}
+        smsConsumer: {destination: sms-topic, content-type: application/json, group: sms-group, consumer: {orderly: true}}
   redis:
     host: www.myredis.com
     port: 6379
@@ -43,7 +43,7 @@ dubbo:
     address: spring-cloud://localhost
   cloud:
     #订阅的服务
-    subscribed-services: user-service-consumer
+    subscribed-services: consumer-service
   consumer:
     #订阅的客户端不检查，dubbo在服务启动后，回去检查调用的Reference接口，检查失败，会导致启动不成功
     check: false
@@ -54,3 +54,7 @@ security:
     resource:
       user-info-uri: http://localhost:8004/api/user/userInfo # 使用auth-server进行认证授权，
       prefer-token-info: false
+
+logging:
+  level:
+    com.zy.alibaba.common.mapper: debug
