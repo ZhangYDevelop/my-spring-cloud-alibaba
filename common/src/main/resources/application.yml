@@ -24,7 +24,7 @@ spring:
         # 这里是个 Map 类型参数，{} 为 YAML 中 Map 的行内写法
         output: {destination: test-topic, content-type: application/json}
         input: {destination: test-topic, content-type: application/json, group: consumer-group}
-        smsProvider: {destination: sms-topic, content-type: application/json, producer: {sync: true}}
+        smsProvider: {destination: sms-topic, content-type: application/json, group: sms-group, producer: {sync: true}}
         smsConsumer: {destination: sms-topic, content-type: application/json, group: sms-group, consumer: {orderly: true}}
   redis:
     host: www.myredis.com

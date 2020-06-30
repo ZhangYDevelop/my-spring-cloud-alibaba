@@ -35,15 +35,24 @@ public class RocketMessageController {
         return "status ";
     }
 
+    /**
+     * 发送顺序消息
+     * @return
+     */
     @RequestMapping("/send2")
     public String sendOutput2() {
         List<String> list = Arrays.asList("创建订单", "支付", "退款");
         for (String s : list) {
             MessageBuilder builder = MessageBuilder.withPayload(s).setHeader(BinderHeaders.PARTITION_HEADER, 0);
             Message message = builder.build();
+//            long time = Long.valueOf("100");
+//            try {
+//                Thread.currentThread().sleep(time);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
             client.smsProvider().send(message);
         }
-//         client.smsProvider().send(MessageBuilder.withPayload("Hello RocketMQ Consumer input2").build());
         return "status " + System.currentTimeMillis();
     }
 }
