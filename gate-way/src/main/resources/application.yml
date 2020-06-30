@@ -1,6 +1,18 @@
 server:
   port: 8001
 spring:
+  thymeleaf:
+    #模板的模式，支持 HTML, XML TEXT JAVASCRIPT
+    mode: HTML
+    #编码 可不用配置
+    encoding: UTF-8
+    #内容类别,可不用配置
+    content-type: text/html
+    #开发配置为false,避免修改模板还要重启服务器
+    cache: false
+    #配置模板路径，默认是templates，可以不用配置
+    prefix: classpath:/templates
+    suffix: .html
   application:
     name: gate-way-service
   cloud:
@@ -43,3 +55,8 @@ dubbo:
   consumer:
     #订阅的客户端不检查，dubbo在服务启动后，回去检查调用的Reference接口，检查失败，会导致启动不成功
     check: false
+
+github:
+  client_id: c9d8fccc9202c219481c
+  client_secret: 16d80255d78b409a22470d47ab7fa6e7c1079d70
+  redirect_url: http://localhost:8001/api/github/callback
