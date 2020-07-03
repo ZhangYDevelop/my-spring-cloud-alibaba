@@ -1,28 +1,32 @@
+
 package com.zy.alibaba.gateway.controller.github;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zy.alibaba.gateway.conf.AssesTokenProperties;
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.net.URI;
 
 /**
  * @AUTHOR zhangy
  * 2020-06-30  20:47
  */
-@RestController
+@Controller
 @RequestMapping("/api/github")
 public class GithubHandlerController {
 
     @Autowired
     private AssesTokenProperties assesTokenProperties;
 
+//    @Autowired
+//    private RedirectHandler redirectHandler;
 
-    @GetMapping("/callback")
+
+    @RequestMapping("/callback")
     public String githubCallback(String code, String state) {
 
         MediaType mediaType = MediaType.get("application/json; charset=utf-8");
@@ -40,18 +44,15 @@ public class GithubHandlerController {
                 .url("https://github.com/login/oauth/access_token")
                 .post(body)
                 .build();
-        try (
-                Response response = client.newCall(request).execute()) {
-            String string = response.body().string();
-            System.out.println(string);//access_token=c231d1e359bed82f6f98b2a2d86eb916478b56d1&scope=user&token_type=bearer
-            String token = string.split("&")[0].split("=")[1];
-
-
-            return this.getUser(token);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+//        try (
+////                Response response = client.newCall(request).execute()) {
+////            String string = response.body().string();
+////            String token = string.split("&")[0].split("=")[1];
+//           // this.getUser(token);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+        return "main";
     }
 
     /**

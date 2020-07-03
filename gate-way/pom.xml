@@ -18,19 +18,24 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <!--springcloud gateway 采用webflux,内置了netty作为容器，需要配出web中以来的Tomcat-->
+            <!--springcloud gateway 采用webflux,内置了netty作为容器，需要移除web中依赖的Tomcat-->
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-tomcat</artifactId>
                 </exclusion>
+                <!--<exclusion>-->
+                    <!--<groupId>org.springframework</groupId>-->
+                    <!--<artifactId>spring-webmvc</artifactId>-->
+                <!--</exclusion>-->
             </exclusions>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-actuator</artifactId>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -48,10 +53,10 @@
         </dependency>
 
         <!-- Spring Cloud与Dubbo整合依赖-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-dubbo</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.alibaba.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-dubbo</artifactId>-->
+        <!--</dependency>-->
 
         <!-- ThymeLeaf 依赖 -->
         <dependency>
