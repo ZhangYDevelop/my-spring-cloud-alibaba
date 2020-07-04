@@ -12,7 +12,7 @@ spring:
     nacos:
       discovery:
         server-addr: www.mynacos.com:8848
-        ip: www.mylocalhost.com
+#        ip: www.mylocalhost.com
       config:
         enabled: false
   redis:

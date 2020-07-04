@@ -20,6 +20,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/api/login").permitAll()
                 .antMatchers("/api/rocketmq/**").permitAll()
                 .antMatchers("/api/redis/opts").permitAll()
                 .antMatchers("/favicon.ico").permitAll()
