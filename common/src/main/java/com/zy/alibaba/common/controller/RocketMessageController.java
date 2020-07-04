@@ -7,6 +7,7 @@ import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,7 +30,7 @@ public class RocketMessageController {
     @Autowired
     private StreamClient client;
 
-    @RequestMapping("/send1")
+    @GetMapping("/send1")
     public String sendOutput(@RequestParam("msg") String msg)  {
         this.source.output().send(MessageBuilder.withPayload(msg).build());
         return "status ";
@@ -39,7 +40,7 @@ public class RocketMessageController {
      * 发送顺序消息
      * @return
      */
-    @RequestMapping("/send2")
+    @GetMapping("/send2")
     public String sendOutput2() {
         List<String> list = Arrays.asList("创建订单", "支付", "退款");
         for (String s : list) {
