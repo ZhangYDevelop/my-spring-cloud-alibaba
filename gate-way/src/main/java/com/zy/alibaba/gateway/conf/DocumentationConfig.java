@@ -1,42 +1,67 @@
 package com.zy.alibaba.gateway.conf;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.gateway.route.Route;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.gateway.config.GatewayProperties;
 import org.springframework.cloud.gateway.route.RouteLocator;
+import org.springframework.cloud.gateway.support.NameUtils;
 import org.springframework.context.annotation.Configuration;
-import reactor.core.publisher.Flux;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Component;
 import springfox.documentation.swagger.web.SwaggerResource;
 import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Configuration
+@Component
+@Primary
 public class DocumentationConfig implements SwaggerResourcesProvider {
-//    @Autowired
-//    private  RouteLocator routeLocator;
-    // 自动获取系统配置的路由资源集合
+
+    protected  final String API_URI = "/v2/api-docs";
+
+    @Autowired
+    private DiscoveryClient client;
+
+    @Value("${server.port}")
+    private  String gateWayPort;
+
+
+
+    private final RouteLocator routeLocator;
+    private final GatewayProperties gatewayProperties;
+
+    public DocumentationConfig(RouteLocator routeLocator, GatewayProperties gatewayProperties) {
+        this.routeLocator = routeLocator;
+        this.gatewayProperties = gatewayProperties;
+    }
+
+
     @Override
     public List<SwaggerResource> get() {
         List<SwaggerResource> resources = new ArrayList<>();
-//        Flux<Route> routes = routeLocator.getRoutes();
-//        for (List<Route> routeList : routes.buffer().toIterable()) {
-//            routeList.forEach(route -> {
-//                resources.add(swaggerResource(route.getId(),
-//                        route.getUri().getPath().replace("**", "v2/api-docs"), ""));
-//            });
-//        }
+        List<String> serviceIds = client.getServices();
+        for (String serviceId : serviceIds) {
+            List<ServiceInstance> list = client.getInstances(serviceId);
+            if (null != list && list.size() > 0) {
+                StringBuilder sb = new StringBuilder("http://localhost:");
+                sb.append(gateWayPort).append("/").append(serviceId).append(API_URI);
 
+                SwaggerResource resource = swaggerResource(serviceId,  sb.toString());
+                resources.add(resource);
+            }
+        }
 
         return resources;
     }
 
-    // 获取对应的路由资源
-    private SwaggerResource swaggerResource(String name, String location, String version) {
+    private SwaggerResource swaggerResource(String name, String location) {
         SwaggerResource swaggerResource = new SwaggerResource();
         swaggerResource.setName(name);
         swaggerResource.setLocation(location);
-        swaggerResource.setSwaggerVersion(version);
+        swaggerResource.setSwaggerVersion("2.0");
         return swaggerResource;
     }
 }
