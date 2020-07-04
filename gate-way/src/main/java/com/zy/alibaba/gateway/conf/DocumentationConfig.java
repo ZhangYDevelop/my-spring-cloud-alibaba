@@ -28,6 +28,9 @@ public class DocumentationConfig implements SwaggerResourcesProvider {
     @Value("${server.port}")
     private  String gateWayPort;
 
+    @Value("${spring.application.name}")
+    private String gateWayApplicatonName;
+
 
 
     private final RouteLocator routeLocator;
@@ -44,13 +47,15 @@ public class DocumentationConfig implements SwaggerResourcesProvider {
         List<SwaggerResource> resources = new ArrayList<>();
         List<String> serviceIds = client.getServices();
         for (String serviceId : serviceIds) {
-            List<ServiceInstance> list = client.getInstances(serviceId);
-            if (null != list && list.size() > 0) {
-                StringBuilder sb = new StringBuilder("http://localhost:");
-                sb.append(gateWayPort).append("/").append(serviceId).append(API_URI);
+            if(!gateWayApplicatonName.equals(serviceId) ){ // 除去网关，网关不对外提供Restful Api 接口
+                List<ServiceInstance> list = client.getInstances(serviceId);
+                if (null != list && list.size() > 0) {
+                    StringBuilder sb = new StringBuilder("http://localhost:");
+                    sb.append(gateWayPort).append("/").append(serviceId).append(API_URI);
 
-                SwaggerResource resource = swaggerResource(serviceId,  sb.toString());
-                resources.add(resource);
+                    SwaggerResource resource = swaggerResource(serviceId,  sb.toString());
+                    resources.add(resource);
+                }
             }
         }
 
