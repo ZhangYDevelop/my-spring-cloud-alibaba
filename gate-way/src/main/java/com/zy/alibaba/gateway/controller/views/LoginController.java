@@ -13,7 +13,7 @@ public class LoginController {
 
     @RequestMapping({"/login", "/"})
     public String userLogin() {
-        return "login";
+        return "doc";
     }
     @RequestMapping("/main")
     public String main() {

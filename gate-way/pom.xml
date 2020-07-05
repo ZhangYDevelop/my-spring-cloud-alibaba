@@ -15,53 +15,17 @@
 
     <dependencies>
 
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-web</artifactId>-->
-            <!--&lt;!&ndash;springcloud gateway 采用webflux,内置了netty作为容器，需要移除web中依赖的Tomcat&ndash;&gt;-->
-            <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>org.springframework.boot</groupId>-->
-                    <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
-                <!--</exclusion>-->
-                <!--&lt;!&ndash;<exclusion>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<groupId>org.springframework</groupId>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<artifactId>spring-webmvc</artifactId>&ndash;&gt;-->
-                <!--&lt;!&ndash;</exclusion>&ndash;&gt;-->
-            <!--</exclusions>-->
-        <!--</dependency>-->
-
-
-        <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-actuator</artifactId>-->
-        <!--</dependency>-->
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>5.1.5.RELEASE</version>
-        </dependency>
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>com.alibaba.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
 
-        <!-- Spring Cloud与Dubbo整合依赖-->
-        <!--<dependency>-->
-            <!--<groupId>com.alibaba.cloud</groupId>-->
-            <!--<artifactId>spring-cloud-starter-dubbo</artifactId>-->
-        <!--</dependency>-->
 
         <!-- ThymeLeaf 依赖 -->
         <dependency>
@@ -92,6 +56,16 @@
             <artifactId>okhttp</artifactId>
             <version>3.14.1</version>
         </dependency>
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-security</artifactId>-->
+        <!--</dependency>-->
+
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.cloud</groupId>-->
+            <!--<artifactId>spring-cloud-starter-oauth2</artifactId>-->
+        <!--</dependency>-->
 
     </dependencies>
 

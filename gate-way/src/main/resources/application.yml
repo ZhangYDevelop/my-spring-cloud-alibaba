@@ -61,3 +61,13 @@ github:
   client_secret: 16d80255d78b409a22470d47ab7fa6e7c1079d70
   redirect_url: http://localhost:8001/api/github/callback
   login_url: https://github.com/login/oauth/authorize?client_id=c9d8fccc9202c219481c&state=test&redirect_uri=http://localhost:8001/api/github/callback
+security:
+  oauth2:
+    client:
+      client-id: client1
+      client-secret: admin
+      access-token-uri: http://localhost:8004/oauth/token
+      user-authorization-uri: http://localhost:8004/oauth/authorize
+      scope: web
+    authorization:
+      check-token-access: http://localhost:8004/oauth/check_token
