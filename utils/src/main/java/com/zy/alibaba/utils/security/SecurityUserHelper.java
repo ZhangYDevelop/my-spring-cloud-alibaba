@@ -18,7 +18,11 @@ public class SecurityUserHelper {
         return SecurityContextHolder.getContext().getAuthentication();
     }
 
-    public static Object getCurrentPrincipal() {
-        return getCurrentAuthentication().getPrincipal();
+    /**
+     * 获取当前用户名
+     * @return
+     */
+    public static String getCurrentAuthorName() {
+        return getCurrentAuthentication().getName();
     }
 }
