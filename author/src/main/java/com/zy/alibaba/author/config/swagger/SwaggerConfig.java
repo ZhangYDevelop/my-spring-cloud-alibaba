@@ -1,6 +1,5 @@
-package com.zy.alibaba.common.config;
+package com.zy.alibaba.author.config.swagger;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -32,7 +31,7 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 .useDefaultResponseMessages(false)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.zy.alibaba.common.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.zy.alibaba.author"))
                 .paths(PathSelectors.any())
 
                 .build();

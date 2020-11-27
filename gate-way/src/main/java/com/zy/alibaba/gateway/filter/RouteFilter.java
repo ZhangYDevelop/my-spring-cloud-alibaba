@@ -32,9 +32,9 @@ public class RouteFilter implements GlobalFilter, Ordered {
     @Autowired
     private  DiscoveryClient client;
 
-    private List<String> noTokenUrl = Arrays.asList("/v2/api-docs", "/api/login");
+    private List<String> noTokenUrl = Arrays.asList("/v2/api-docs", "/api/login", "swagger-");
 
-    @Value("${oauth2.authorization.check-token-access}")
+//    @Value("${oauth2.authorization.check-token-access}")
     private String checkTokenUrl ;
 
     @Override
@@ -45,7 +45,7 @@ public class RouteFilter implements GlobalFilter, Ordered {
         List<String> tokens = headers.get("access_token");
 
 
-        //放行不需要严重url
+        //放行不需要验证url
         List<String> tempNoTokenUrl = noTokenUrl.stream().filter(item -> path.contains(item)).collect(Collectors.toList());
         if (tempNoTokenUrl !=null && tempNoTokenUrl.size() > 0) {
             return chain.filter(exchange);
@@ -55,15 +55,15 @@ public class RouteFilter implements GlobalFilter, Ordered {
             return exchange.getResponse().setComplete();
         }
         // 验证token的有效性
-        String username = checkToken(tokens.get(0));
-        if (StringUtils.isEmpty(username)) {
-            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-            return exchange.getResponse().setComplete();
-        }
+//        String username = checkToken(tokens.get(0));
+//        if (StringUtils.isEmpty(username)) {
+//            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+//            return exchange.getResponse().setComplete();
+//        }
 
         // 设置用户信息
-        ServerHttpRequest request = exchange.getRequest().mutate().header("username", username).build();
-        return chain.filter(exchange.mutate().request(request).build());
+//        ServerHttpRequest request = exchange.getRequest().mutate().header("username", username).build();
+        return chain.filter(exchange);
     }
 
     private String checkToken(String token) {

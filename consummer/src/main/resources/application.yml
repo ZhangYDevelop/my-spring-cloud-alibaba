@@ -18,6 +18,11 @@ spring:
   redis:
     host: www.myredis.com
     port: 6379
+  security:
+    user:
+      password: admin
+      name: admin
+#### dubbo 配置
 dubbo:
   protocol:
     name: dubbo

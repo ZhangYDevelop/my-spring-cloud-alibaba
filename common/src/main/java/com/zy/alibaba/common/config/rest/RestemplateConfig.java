@@ -1,4 +1,4 @@
-package com.zy.alibaba.common.config;
+package com.zy.alibaba.common.config.rest;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -20,12 +20,13 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                //.antMatchers("/api/user/userInfo").permitAll()
                 .antMatchers("/favicon.ico").permitAll()
                 .antMatchers("/v2/api-docs").permitAll()
-                .antMatchers("/swagger-ui.html").permitAll()
-                .anyRequest().authenticated()
-                .and().httpBasic();
+                .antMatchers("/swagger-ui.html/**", "/webjars/**",
+                        "/swagger-resources/**", "/v2/api-docs/**",
+                        "/swagger-resources/configuration/ui/**", "/swagger-resources/configuration/security/**",
+                        "/images/**").permitAll()
+                .anyRequest().authenticated();
     }
 
     @Override

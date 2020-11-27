@@ -19,6 +19,7 @@ spring:
       config:
         enabled: false
 
+#### dubbo配置
 dubbo:
   protocol:
     name: dubbo

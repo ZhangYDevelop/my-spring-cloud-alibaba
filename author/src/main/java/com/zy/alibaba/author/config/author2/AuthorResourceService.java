@@ -22,7 +22,10 @@ public class AuthorResourceService extends ResourceServerConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/oauth/**", "/api/logout").permitAll()
                 .antMatchers("/v2/api-docs").permitAll()
-                .antMatchers("/swagger-ui.html").permitAll()
+                .antMatchers("/swagger-ui.html/**", "/webjars/**",
+                        "/swagger-resources/**", "/v2/api-docs/**",
+                        "/swagger-resources/configuration/ui/**", "/swagger-resources/configuration/security/**",
+                        "/images/**").permitAll()
                 .anyRequest().authenticated()
                 .and().formLogin();
     }

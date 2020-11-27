@@ -1,4 +1,4 @@
-package com.zy.alibaba.consumer.config;
+package com.zy.alibaba.consumer.config.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,7 +33,6 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.zy.alibaba.consumer"))
                 .paths(PathSelectors.any())
-
                 .build();
     }
 

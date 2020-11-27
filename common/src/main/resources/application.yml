@@ -29,15 +29,17 @@ spring:
   redis:
     host: www.myredis.com
     port: 6379
+    password: redis
   security:
     user:
       password: admin
       name: admin
 
+#### dubbo 配置
 dubbo:
   protocol:
     name: dubbo
-    port: 20883
+    port: 20881
   registry:
     #将dubbo服务挂在到Springcloud，本案例中就是读取nacos中的服务
     address: spring-cloud://localhost
