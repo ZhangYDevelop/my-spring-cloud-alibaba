@@ -27,7 +27,7 @@ public class HttpUtils {
      * @param params
      * @return
      */
-    public static String sendPost(String requestUrl ,String params) {
+    public static String doPost(String requestUrl ,String params) {
 
         HttpURLConnection con = null;
         BufferedReader reader = null;
@@ -95,7 +95,7 @@ public class HttpUtils {
      * @param jsonString
      * @return
      */
-    public static String sendPosteByHttpClient(String requestUrl ,String jsonString) {
+    public static String doPostByHttpClient(String requestUrl ,String jsonString) {
         // 1. 创建HttpClient对象
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         // 2. 创建HttpPost对象
@@ -131,7 +131,7 @@ public class HttpUtils {
      * @param requestUrl
      * @return
      */
-    public static String sendGetByHttpClient(String requestUrl) {
+    public static String doGetHttpClient(String requestUrl) {
         // 1. 创建HttpClient对象
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         // 2. 创建HttpPost对象
