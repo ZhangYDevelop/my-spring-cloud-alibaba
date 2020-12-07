@@ -42,7 +42,7 @@ public class RouteFilter implements GlobalFilter, Ordered {
         String path = exchange.getRequest().getPath().pathWithinApplication().toString();
 
         HttpHeaders headers =  exchange.getRequest().getHeaders();
-        List<String> tokens = headers.get("access_token");
+        List<String> tokens = headers.get("Authorization");
 
 
         //放行不需要验证url
