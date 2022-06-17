@@ -34,7 +34,7 @@
         <jedis.version>2.9.1</jedis.version>
         <dubbo-api.version>1.0-SNAPSHOT</dubbo-api.version>
         <utils.version>1.0-SNAPSHOT</utils.version>
-        <fastjson.version>1.2.9</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <swagger2-spring-boot-starter.version>1.1.0</swagger2-spring-boot-starter.version>
         <spring-cloud-stream-binder-rocketmq.version>2.1.0.RELEASE</spring-cloud-stream-binder-rocketmq.version>
     </properties>
